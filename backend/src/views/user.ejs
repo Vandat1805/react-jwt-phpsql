@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List user</title>
+    
+</head>
+<style>
+    .form-user{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .table-user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    table, th, td {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+    th  {
+        background-color: #D6EEEE;
+    }
+    .btn-edit
+    {
+        padding: 0px 4px;
+        font-size: 18px;
+        background-color: #fbbf24;
+        color: white;
+        text-decoration: none;
+    }
+    .btn-delete{
+        font-size: 18px;
+        background-color: #ef4444;
+        color: white;
+    }
+    .btn-submit{
+        font-size: 18px;
+        background-color: #3b82f6;
+        color: white;
+    }
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+    }
+    
+</style>
+<body>
+    <form action="/users/create-user" method="POST">
+    <div class="form-user">
+        <h3>Create a new user</h3>
+        <div class="email">
+            <label for="email">Email address</label>
+            <br>
+            <input type="text" name="email">
+        </div>
+        <div class="password">
+            <label for="password">Password </label>
+            <br>
+            <input type="password" name="password">
+        </div>
+        <div class="username">
+            <label for="username">Username </label>
+            <br>
+            <input type="text" name="username">
+        </div>
+        <br>
+        <div class="button">
+            <button class="btn-submit" type="submit">Submit</button>
+        </div>
+    </div>
+    </form>
+    <div class="wrap-table">
+    <h3>Table user:</h3>
+        <div class="table-user">
+        <table style="width:80%">
+                <tr>
+                    <th>Number</th>
+                    <th>Email</th>
+                    <th>Username</th> 
+                    <th>Action</th>
+                </tr>
+                <% userList.forEach(function(item,index){ %>
+                 <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.email %></td>
+                    <td><%= item.username %></td>
+                    <td>
+                        <a class="btn-edit" href="/update-user/<%= item.id %>">Edit</a>
+                        <form style="display: inline;" action="/delete-user/<%= item.id %>" method="POST">
+                            <button class="btn-delete" type="submit">Delete</button>
+                        </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

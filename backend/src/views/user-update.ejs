@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit user</title>
+    
+</head>
+<style>
+    .form-user{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .table-user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    table, th, td {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+    th  {
+        background-color: #D6EEEE;
+    }
+    .btn-edit
+    {
+        font-size: 18px;
+        background-color: #fbbf24;
+        color: white;
+    }
+    .btn-delete{
+        font-size: 18px;
+        background-color: #ef4444;
+        color: white;
+    }
+    .btn-submit{
+        font-size: 18px;
+        background-color: #3b82f6;
+        color: white;
+    }
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+    }
+    
+</style>
+<body>
+    <form action="/user/update-user" method="POST">
+    <div class="form-user">
+        <h3>Update a new user</h3>
+        <input type="hidden" value="<%= userData.id %>" name="id">
+        <div class="email">
+            <label for="email">Email address</label>
+            <br>
+            <input value="<%= userData.email %>" type="text" name="email">
+        </div>
+        <div class="username">
+            <label for="username">Username </label>
+            <br>
+            <input value="<%= userData.username %>" type="text" name="username">
+        </div>
+        <br>
+        <div class="button">
+            <button class="btn-submit" type="submit">Update</button>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
